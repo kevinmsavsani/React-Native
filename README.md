@@ -7,3 +7,8 @@ reference video - https://www.youtube.com/watch?v=0-S5a0eXPoc
 sudo npm i -g expo-cli
 
 expo init ReactNative
+
+sodo apt install adb
+
+Debug using google chrome - remote debugging
+Debug using vs code - remote debugging
