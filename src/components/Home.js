@@ -4,24 +4,34 @@
 
 // React native and others libraries imports
 import React from 'react'
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Container, Content, View, Header, Icon, Button, Left, Right, Body, Title, List, ListItem, Thumbnail, Grid, Col } from 'native-base';
 
+// Our custom files and classes import
+import Text from '../screens/Text';
 import Navbar from '../screens/Navbar';
+import SideMenu from '../screens/SideMenu';
+import SideMenuDrawer from '../screens/SideMenuDrawer';
 import CategoryBlock from '../screens/CategoryBlock';
 
 export default class Home extends React.Component {
     render() {
-        var left = (<Left><Button transparent><Icon name='menu' /></Button></Left>);
+        var left = <Left style={{flex:1}}>
+                       <Button onPress={() => this._sideMenuDrawer.open()} transparent>
+                            <Icon name='menu' />
+                       </Button>
+                    </Left>;
         var right = (<Right><Button transparent><Icon name='menu' /></Button></Right>);
         return (
-            <Container>
+            <SideMenuDrawer ref={(ref) => this._sideMenuDrawer = ref}>
+              <Container>
                 <Navbar left={left} right={right} title="MY STORE" />
                 <Content>
-                    {this.renderCategories()}
+                  {this.renderCategories()}
                 </Content>
-            </Container>
+              </Container>
+            </SideMenuDrawer>
         )
     }
 
