@@ -1,25 +1,20 @@
-import { StatusBar } from "expo-status-bar";
-
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React from 'react';
+import Main from './src/Index';
+import Expo from 'expo';
 
 export default class App extends React.Component {
+   constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+
+   async componentWillMount() {
+    this.setState({ loading: false });
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
+		<Main></Main>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+}
