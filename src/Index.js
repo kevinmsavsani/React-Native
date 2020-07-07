@@ -5,36 +5,29 @@
 
 // React native and others libraries imports
 import { StatusBar } from 'expo-status-bar';
-
 import React, { Component } from 'react';
 import { BackHandler, StyleSheet, Text, View } from 'react-native';
-
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import { Root } from 'native-base';
 
+// Our custom files and classes import
+import Home from './components/Home';
 
-export default class Index extends Component {
+export default class Main extends Component {
   componentWillMount = () => {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
   };
 
   render() {
-    return (
-        <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
-          <StatusBar style="auto" />
-        </View>
-      );
+    return(
+      <Root>
+        <Router>
+          <Scene key="root">
+            <Scene initial key="home" component={Home} />
+          </Scene>
+        </Router>
+      </Root>
+    );
   }
 
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
