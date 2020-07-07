@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { ActivityIndicator } from 'react-native'
+import { Container } from 'native-base'
+import * as Font from 'expo-font'
 import Index from './src/Index';
-import Expo from 'expo';
 
-export default class App extends React.Component {
-   constructor(props) {
-    super(props);
-    this.state = { loading: true };
+export default class Login extends Component {
+
+  state = {
+    isReady: false
   }
 
-   async componentWillMount() {
-    this.setState({ loading: false });
+  componentDidMount = async() => {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
+    })
+    this.setState({ isReady: true })
   }
 
-  render() {
+  render () {
+    if (!this.state.isReady) {
+      return <ActivityIndicator />
+    }
     return (
-		<Index />
-	);
-}
+        <Index />
+    )
+  }
 }

@@ -25,7 +25,7 @@ import Signup from './components/Signup';
 import Checkout from './components/Checkout';
 
 export default class Index extends Component {
-  componentWillMount = () => {
+  componentDidMount = () => {
     BackHandler.addEventListener('hardwareBackPress', () => Actions.pop());
   };
 
