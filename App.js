@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './src/Index';
+import Index from './src/Index';
 import Expo from 'expo';
 
 export default class App extends React.Component {
@@ -14,7 +14,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-		<Main></Main>
+		<Index />
 	);
 }
 }
